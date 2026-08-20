@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PROJECT R — Book a DJ for Weddings, Clubs, Corporate &amp; Parties</title>
+<meta name="description" content="Project R — professional DJ for weddings, sangeet, clubs, pubs, corporate events and private parties. Sound, lighting and a full setup included. Check your date on WhatsApp.">
+<meta property="og:title" content="PROJECT R — Book the Night">
+<meta property="og:description" content="Weddings · Clubs &amp; Pubs · Corporate · Private Parties. Check your date on WhatsApp.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=13">
+</head>
+<body>
+
+<!-- ============ DOOR / PRELOADER ============ -->
+<div id="door">
+  <div class="door-inner">
+    <div class="door-tag">// NOW BOOKING — 2026 DATES</div>
+    <h1 class="door-title glitch" data-text="PROJECT R">PROJECT R</h1>
+    <p class="door-sub">LOADING THE FLOOR <span id="doorPct">00</span>%</p>
+    <div class="door-bar"><i id="doorFill"></i></div>
+    <button class="btn" id="enterBtn">Enter <span>▸</span></button>
+    <p class="door-note">WEDDINGS · CLUBS · CORPORATE · PRIVATE PARTIES</p>
+  </div>
+</div>
+
+<!-- ============ AMBIENT FX ============ -->
+<div class="fx fx-haze"></div>
+<div class="fx fx-hue" id="hue"></div>
+<div class="fx fx-grid"></div>
+<div class="fx fx-lasers" id="lasers">
+  <i class="laser"></i><i class="laser"></i><i class="laser"></i><i class="laser"></i>
+</div>
+<div class="fx" id="specks"></div>
+<div class="fx fx-scan"></div>
+<div class="fx fx-vig"></div>
+<div class="cursor"></div><div class="cursor-ring"></div>
+
+<div class="playhead"><i id="playhead"></i></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a href="#top" class="brand">
+    <span class="brand-mark"></span>
+    <span><b>PROJECT R</b><small>BOOK THE NIGHT</small></span>
+  </a>
+  <nav id="menu">
+    <ul>
+      <li><a href="#services">Events</a></li>
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="#setup">Setup</a></li>
+      <li><a href="#packages">Packages</a></li>
+      <li><a href="#sound">Music</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#booking">Enquire</a></li>
+    </ul>
+  </nav>
+  <div class="nav-right">
+    <a href="#booking" class="btn" data-wa="I'd like to check a date for my event.">Check My Date</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" data-hue="rgba(139,59,255,.18)">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-kicker">
+        <span class="live-dot"></span>
+        <span class="chip">NOW BOOKING 2026</span>
+        <span class="chip amb">WEDDINGS &amp; SANGEET</span>
+        <span class="chip mag">CLUBS &amp; CORPORATE</span>
+      </div>
+      <h1>
+        <span class="glitch" data-text="PROJECT R">PROJECT R</span>
+        <span class="l2">BOOK THE NIGHT</span>
+      </h1>
+      <p class="hero-sub">Weddings, sangeet, club nights, corporate parties and private events.
+      One DJ, full sound and lighting setup, and a floor that doesn't sit down.
+      <b style="color:var(--txt)">Tell me your date — I'll tell you in minutes if it's free.</b></p>
+      <div class="hero-cta">
+        <a href="#" class="btn wa" data-wa="Hi, I want to check availability for my event.">Check Availability on WhatsApp</a>
+        <a href="#packages" class="btn ghost">See Packages &amp; Pricing</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b data-count="000">0</b><span>Events Played</span></div>
+        <div class="stat"><b data-count="00">0</b><span>Years Behind the Deck</span></div>
+        <div class="stat"><b data-count="00">0</b><span>Cities Covered</span></div>
+        <div class="stat"><b data-count="000">0</b><span>Happy Clients</span></div>
+      </div>
+      <p class="form-note">▸ Numbers above are placeholders — send me the real figures and I'll drop them in.</p>
+    </div>
+    <div>
+      <div class="deck">
+        <div class="ring r2"></div><div class="ring"></div>
+        <div class="platter"></div>
+        <div class="deck-badge">REPLYING IN UNDER 1 HOUR</div>
+      </div>
+      <div class="eq" id="eq"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" data-hue="rgba(255,180,61,.15)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">01 — WHAT I PLAY</div>
+      <h2 class="sec-title">FOUR KINDS <em>OF NIGHT</em></h2>
+      <p class="sec-desc">Pick the one that matches your event. Every booking includes the DJ, the sound system, the lighting and a setup team that arrives early.</p>
+    </div>
+    <div class="grid-4 svc-grid" style="gap:20px">
+
+      <article class="svc rv">
+        <div class="ico">💍</div>
+        <span class="glow"></span><span class="edge"></span>
+        <h3>WEDDINGS &amp; SANGEET</h3>
+        <p>Baraat to the last dance. Bollywood, Punjabi, retro and the family favourites — read live off the floor, not off a fixed playlist.</p>
+        <div class="nm">
+          <div class="nm-top"><span>Floor Energy</span><b data-bpm="118">118 BPM</b></div>
+          <div class="nm-bar"><i style="--w:72%"></i></div>
+          <div class="nm-ticks"><span>DINNER</span><span>BARAAT</span></div>
+        </div>
+        <ul>
+          <li>Baraat, sangeet, cocktail &amp; reception</li>
+          <li>Entry songs &amp; performance cues planned with you</li>
+          <li>Wireless mics for anchors and speeches</li>
+          <li>Dhol / live percussion on request</li>
+        </ul>
+        <a href="#" class="btn wa" data-wa="Hi, I'm planning a wedding/sangeet and want a quote.">Get a Quote</a>
+      </article>
+
+      <article class="svc rv">
+        <div class="ico">🍸</div>
+        <span class="glow"></span><span class="edge"></span>
+        <h3>CLUBS, PUBS &amp; LOUNGES</h3>
+        <p>Weekend nights, guest slots and residencies. Built as a proper arc — easy at nine, packed by midnight, held there till close.</p>
+        <div class="nm">
+          <div class="nm-top"><span>Floor Energy</span><b data-bpm="132">132 BPM</b></div>
+          <div class="nm-bar"><i style="--w:92%"></i></div>
+          <div class="nm-ticks"><span>OPEN</span><span>LAST CALL</span></div>
+        </div>
+        <ul>
+          <li>Commercial, house, techno &amp; desi crossover</li>
+          <li>3–5 hour sets, no dead patches</li>
+          <li>Works with your in-house rig or brings its own</li>
+          <li>Promo assets for the venue's socials</li>
+        </ul>
+        <a href="#" class="btn wa" data-wa="Hi, I run a venue and want to discuss a night.">Talk to Me</a>
+      </article>
+
+      <article class="svc rv">
+        <div class="ico">🏢</div>
+        <span class="glow"></span><span class="edge"></span>
+        <h3>CORPORATE &amp; BRAND</h3>
+        <p>Annual days, product launches, conferences and after-parties. Clean, on-brand, and timed to your run sheet to the minute.</p>
+        <div class="nm">
+          <div class="nm-top"><span>Floor Energy</span><b data-bpm="112">112 BPM</b></div>
+          <div class="nm-bar"><i style="--w:58%"></i></div>
+          <div class="nm-ticks"><span>DINING</span><span>AFTER-PARTY</span></div>
+        </div>
+        <ul>
+          <li>Run-sheet driven, cue-to-cue with your AV team</li>
+          <li>Clean edits only, no explicit tracks</li>
+          <li>Ambient dining sets &amp; award-show stings</li>
+          <li>GST invoice, PO and contract friendly</li>
+        </ul>
+        <a href="#" class="btn wa" data-wa="Hi, I'd like a quote for a corporate event.">Request Proposal</a>
+      </article>
+
+      <article class="svc rv">
+        <div class="ico">🎉</div>
+        <span class="glow"></span><span class="edge"></span>
+        <h3>PRIVATE &amp; COLLEGE</h3>
+        <p>Birthdays, house parties, farewells and college fests. Loud where it should be, legal where it has to be, fun the whole way through.</p>
+        <div class="nm">
+          <div class="nm-top"><span>Floor Energy</span><b data-bpm="126">126 BPM</b></div>
+          <div class="nm-bar"><i style="--w:84%"></i></div>
+          <div class="nm-ticks"><span>WARM-UP</span><span>PEAK</span></div>
+        </div>
+        <ul>
+          <li>Compact setups for terraces &amp; farmhouses</li>
+          <li>Fest-scale rigs for auditoriums &amp; grounds</li>
+          <li>Requests welcome — send a list beforehand</li>
+          <li>Student-friendly packages</li>
+        </ul>
+        <a href="#" class="btn wa" data-wa="Hi, I'm planning a private party/college event.">Check Pricing</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS (pinned horizontal) ============ -->
+<section id="process" data-hue="rgba(0,240,255,.14)">
+  <div class="pin-wrap">
+    <div class="pin">
+      <div class="wrap pin-head rv">
+        <div class="sec-num">02 — HOW IT WORKS</div>
+        <h2 class="sec-title">FOUR STEPS, <em>NO CHASING</em></h2>
+        <p class="sec-desc">Booking a DJ shouldn't take a week of phone tag. Here's the whole process — keep scrolling.</p>
+      </div>
+
+      <div class="htrack" id="htrack">
+        <article class="hpanel step">
+          <b>01</b>
+          <h3>Send Your Date</h3>
+          <p>WhatsApp us the date, city and type of event. You'll get availability and a price range back the same day.</p>
+          <span class="hp-tag">TAKES 30 SECONDS</span>
+        </article>
+        <article class="hpanel step">
+          <b>02</b>
+          <h3>Lock It In</h3>
+          <p>A written quote and a simple booking confirmation. A part-advance holds the date — the rest on the day.</p>
+          <span class="hp-tag">NO VERBAL HOLDS</span>
+        </article>
+        <article class="hpanel step">
+          <b>03</b>
+          <h3>Plan the Music</h3>
+          <p>A call before the event: entry songs, must-plays, do-not-plays, timings and who's speaking when.</p>
+          <span class="hp-tag">1 WEEK BEFORE</span>
+        </article>
+        <article class="hpanel step">
+          <b>04</b>
+          <h3>Show Night</h3>
+          <p>Setup and soundcheck done well before guests arrive. Then it's our problem, not yours.</p>
+          <span class="hp-tag">YOU JUST SHOW UP</span>
+        </article>
+        <article class="hpanel hpanel-cta">
+          <div class="ico">💬</div>
+          <h3>That's It.</h3>
+          <p>No forms to chase, no week of phone tag. Start at step one right now.</p>
+          <a href="#" class="btn wa" data-wa="Hi, let's start with step 1 — here's my date:">Send Your Date</a>
+        </article>
+      </div>
+
+      <div class="hrail">
+        <div class="hrail-bar"><i id="hprog"></i></div>
+        <div class="hrail-marks"><span>01</span><span>02</span><span>03</span><span>04</span><span>GO</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SETUP ============ -->
+<section id="setup" data-hue="rgba(139,59,255,.16)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">03 — WHAT YOU GET</div>
+      <h2 class="sec-title">THE FULL <em>SETUP</em></h2>
+      <p class="sec-desc">You're not just hiring someone to press play. This is the kit that comes with the booking — scale it up or down to your venue.</p>
+    </div>
+    <div class="grid-2" style="gap:34px">
+      <div class="rv">
+        <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:18px;color:var(--cyan)">INCLUDED AS STANDARD</h3>
+        <div style="display:grid;gap:10px">
+          <div class="kit"><span class="k-ico">🔊</span><span><b>Line-array or top-and-sub PA</b><span>Sized to your guest count</span></span></div>
+          <div class="kit"><span class="k-ico">🎛️</span><span><b>Pro DJ console</b><span>Club-standard players &amp; mixer</span></span></div>
+          <div class="kit"><span class="k-ico">💡</span><span><b>Stage &amp; dancefloor lighting</b><span>Moving heads, pars, controller</span></span></div>
+          <div class="kit"><span class="k-ico">🎤</span><span><b>Two wireless mics</b><span>Anchor, speeches, performances</span></span></div>
+          <div class="kit"><span class="k-ico">🧰</span><span><b>Backup gear on site</b><span>Spare player, mixer &amp; cables</span></span></div>
+          <div class="kit"><span class="k-ico">👥</span><span><b>Setup &amp; teardown crew</b><span>On site hours before doors</span></span></div>
+        </div>
+      </div>
+      <div class="rv">
+        <h3 style="font-family:var(--font-display);font-size:20px;margin-bottom:18px;color:var(--amber)">ADD-ONS ON REQUEST</h3>
+        <div style="display:grid;gap:10px">
+          <div class="kit"><span class="k-ico">🥁</span><span><b>Dhol &amp; live percussion</b><span>Baraat and sangeet favourite</span></span></div>
+          <div class="kit"><span class="k-ico">📺</span><span><b>LED wall &amp; visuals</b><span>Custom content for your event</span></span></div>
+          <div class="kit"><span class="k-ico">💨</span><span><b>Smoke, haze &amp; CO₂</b><span>Where the venue permits</span></span></div>
+          <div class="kit"><span class="k-ico">✨</span><span><b>Cold pyro &amp; sparklers</b><span>Entries and first dance</span></span></div>
+          <div class="kit"><span class="k-ico">🎧</span><span><b>Second DJ / MC</b><span>Long events and twin stages</span></span></div>
+          <div class="kit"><span class="k-ico">🔌</span><span><b>Generator backup</b><span>Outdoor and farmhouse venues</span></span></div>
+        </div>
+        <p class="form-note" style="margin-top:18px">Not sure what your venue needs? Send me the venue name — I'll tell you what fits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PACKAGES ============ -->
+<section id="packages" data-hue="rgba(255,43,209,.14)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">04 — PACKAGES</div>
+      <h2 class="sec-title">STRAIGHT <em>PRICING</em></h2>
+      <p class="sec-desc">Ballpark bands so you can plan a budget. Final quote depends on date, city, guest count and hours — ask and you'll get an exact number, not a callback.</p>
+    </div>
+    <div class="grid-3">
+      <div class="pkg rv">
+        <h3>ESSENTIAL</h3>
+        <div class="who">House parties · Small functions</div>
+        <div class="price">₹ __,___<small>STARTING FROM · UP TO 4 HOURS</small></div>
+        <ul>
+          <li>DJ set up to 4 hours</li>
+          <li>PA for up to 150 guests</li>
+          <li>Basic dancefloor lighting</li>
+          <li>One wireless mic</li>
+          <li>Setup &amp; teardown included</li>
+        </ul>
+        <a href="#" class="btn ghost wa" data-wa="Hi, I'm interested in the ESSENTIAL package.">Enquire</a>
+      </div>
+      <div class="pkg hot rv">
+        <span class="flag">MOST BOOKED</span>
+        <h3>SIGNATURE</h3>
+        <div class="who">Weddings · Sangeet · Corporate</div>
+        <div class="price">₹ __,___<small>STARTING FROM · UP TO 6 HOURS</small></div>
+        <ul>
+          <li>DJ set up to 6 hours</li>
+          <li>PA for up to 500 guests</li>
+          <li>Full stage &amp; dancefloor lighting</li>
+          <li>Two wireless mics + backup gear</li>
+          <li>Planning call &amp; custom playlist</li>
+          <li>Smoke / haze included</li>
+        </ul>
+        <a href="#" class="btn wa" data-wa="Hi, I'm interested in the SIGNATURE package.">Enquire</a>
+      </div>
+      <div class="pkg rv">
+        <h3>GRAND</h3>
+        <div class="who">Big weddings · Fests · Launches</div>
+        <div class="price">₹ _,__,___<small>STARTING FROM · FULL EVENT</small></div>
+        <ul>
+          <li>Multi-day / multi-function coverage</li>
+          <li>Large-format PA, 1000+ guests</li>
+          <li>LED wall, moving heads, cold pyro</li>
+          <li>Second DJ / MC on standby</li>
+          <li>Generator backup &amp; full crew</li>
+          <li>On-site coordinator</li>
+        </ul>
+        <a href="#" class="btn ghost wa" data-wa="Hi, I'm interested in the GRAND package.">Enquire</a>
+      </div>
+    </div>
+    <p class="form-note" style="text-align:center;margin-top:26px">▸ Prices are blank placeholders. Send me your real bands and inclusions and I'll fill them in.</p>
+  </div>
+</section>
+
+<!-- ============ MUSIC ============ -->
+<section id="sound" data-hue="rgba(0,240,255,.15)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">05 — THE MUSIC</div>
+      <h2 class="sec-title">WHAT ACTUALLY <em>GETS PLAYED</em></h2>
+      <p class="sec-desc">Every crowd is different, so nothing is fixed. This is roughly where a typical night sits — and yes, you can send a must-play list.</p>
+    </div>
+    <div class="grid-2">
+      <div class="rv" id="meters">
+        <div class="meter"><div class="meter-top"><b>Bollywood &amp; Hindi Commercial</b><span>95%</span></div><div class="meter-bar"><i data-w="95"></i></div></div>
+        <div class="meter"><div class="meter-top"><b>Punjabi &amp; Bhangra</b><span>90%</span></div><div class="meter-bar"><i data-w="90"></i></div></div>
+        <div class="meter"><div class="meter-top"><b>Retro &amp; 90s Classics</b><span>75%</span></div><div class="meter-bar"><i data-w="75"></i></div></div>
+        <div class="meter"><div class="meter-top"><b>English Pop &amp; Hip-Hop</b><span>70%</span></div><div class="meter-bar"><i data-w="70"></i></div></div>
+        <div class="meter"><div class="meter-top"><b>House &amp; EDM</b><span>65%</span></div><div class="meter-bar"><i data-w="65"></i></div></div>
+        <div class="meter"><div class="meter-top"><b>Techno &amp; Afro-House (club sets)</b><span>40%</span></div><div class="meter-bar"><i data-w="40"></i></div></div>
+      </div>
+      <div style="display:grid;gap:16px">
+        <div class="panel rv"><div class="panel-num">HOW I READ A FLOOR</div><h3>Requests, handled properly</h3><p>Send a must-play and a do-not-play list before the event. On the night, requests get worked into the set where they fit — not dropped in and killed halfway.</p></div>
+        <div class="panel rv"><div class="panel-num">FOR FAMILY FUNCTIONS</div><h3>Everyone gets a song</h3><p>Grandparents at nine, cousins at eleven, the die-hards at one. The order matters more than the tracks.</p></div>
+        <div class="panel rv"><div class="panel-num">HEAR A SET</div><h3>Sample mixes</h3><p>Wedding, club and corporate sample sets — link them here once recorded.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+            <a href="#" class="btn ghost" style="padding:10px 16px;font-size:11px">Instagram</a>
+            <a href="#" class="btn ghost" style="padding:10px 16px;font-size:11px">YouTube</a>
+            <a href="#" class="btn ghost" style="padding:10px 16px;font-size:11px">SoundCloud</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery" data-hue="rgba(139,59,255,.17)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">06 — THE FLOOR</div>
+      <h2 class="sec-title">NIGHTS THAT <em>WENT OFF</em></h2>
+      <p class="sec-desc">Placeholder tiles — swap each one for a real photo from a past event (1600px or larger).</p>
+    </div>
+    <div class="gal rv">
+      <figure class="shot"><span class="ico">💃</span><figcaption class="cap">Sangeet Night · Dancefloor</figcaption></figure>
+      <figure class="shot"><span class="ico">🎛️</span><figcaption class="cap">The Console · Setup</figcaption></figure>
+      <figure class="shot"><span class="ico">🥁</span><figcaption class="cap">Dhol · Baraat Entry</figcaption></figure>
+      <figure class="shot"><span class="ico">🪩</span><figcaption class="cap">Reception · Full Rig</figcaption></figure>
+      <figure class="shot"><span class="ico">🏢</span><figcaption class="cap">Corporate Annual Day</figcaption></figure>
+      <figure class="shot"><span class="ico">🍸</span><figcaption class="cap">Club Night · Peak Hour</figcaption></figure>
+      <figure class="shot"><span class="ico">✨</span><figcaption class="cap">Cold Pyro · First Dance</figcaption></figure>
+    </div>
+    <div style="text-align:center;margin-top:34px" class="rv">
+      <a href="#" class="btn wa" data-wa="Hi, can you send more photos/videos of past events?">Ask for More Photos &amp; Videos</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews" data-hue="rgba(255,180,61,.13)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">07 — REVIEWS</div>
+      <h2 class="sec-title">WHAT CLIENTS <em>SAID</em></h2>
+      <p class="sec-desc">Placeholders below. Replace with real reviews — a screenshot from WhatsApp or Google beats any written testimonial.</p>
+    </div>
+    <div class="grid-3">
+      <div class="tst rv"><div class="stars">★★★★★</div><p>“Placeholder — paste a real review from a wedding client here.”</p><b>Client Name<em>Wedding · City · Month Year</em></b></div>
+      <div class="tst rv"><div class="stars">★★★★★</div><p>“Placeholder — a venue manager or promoter review.”</p><b>Venue Name<em>Club Night · City · Month Year</em></b></div>
+      <div class="tst rv"><div class="stars">★★★★★</div><p>“Placeholder — a corporate or college organiser review.”</p><b>Company Name<em>Annual Day · City · Month Year</em></b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section id="booking" data-hue="rgba(37,211,102,.12)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">08 — ENQUIRE</div>
+      <h2 class="sec-title">CHECK YOUR <em>DATE</em></h2>
+      <p class="sec-desc">Fastest way is WhatsApp. Or fill this in — it opens WhatsApp with your details already typed out.</p>
+    </div>
+    <div class="book">
+      <div class="rv">
+        <a href="#" class="panel wa" style="display:block;margin-bottom:16px;border-color:rgba(37,211,102,.4)" data-wa="Hi, I want to check availability for my event.">
+          <div class="panel-num" style="color:#25D366">FASTEST — TAP TO CHAT</div>
+          <h3 id="waNumber">+91 XXXXX XXXXX</h3>
+          <p>Usually replies within the hour. Send the date, city and event type in your first message and you'll get a price range straight back.</p>
+        </a>
+        <a href="#" class="panel" style="display:block;margin-bottom:16px" id="callCard">
+          <div class="panel-num">PREFER TO TALK?</div>
+          <h3>Call directly</h3>
+          <p>Between 11am and 9pm, any day.</p>
+        </a>
+        <div class="panel">
+          <div class="panel-num">EMAIL</div>
+          <h3>bookings@projectr.example</h3>
+          <p>For corporate proposals, invoices, POs and contracts.</p>
+        </div>
+      </div>
+      <form class="rv" id="bookForm" novalidate>
+        <div class="grid-2" style="gap:0 20px">
+          <div class="field"><label for="f-name">Your Name *</label><input id="f-name" required placeholder="Full name"></div>
+          <div class="field"><label for="f-phone">Phone / WhatsApp *</label><input id="f-phone" required placeholder="+91"></div>
+          <div class="field"><label for="f-date">Event Date *</label><input id="f-date" type="date" required></div>
+          <div class="field"><label for="f-city">City</label><input id="f-city" placeholder="City / venue area"></div>
+        </div>
+        <div class="field"><label for="f-type">Event Type</label>
+          <select id="f-type">
+            <option>Wedding / Sangeet / Reception</option>
+            <option>Club, Pub or Lounge Night</option>
+            <option>Corporate / Brand Event</option>
+            <option>Private Party / Birthday</option>
+            <option>College Fest / Farewell</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="grid-2" style="gap:0 20px">
+          <div class="field"><label for="f-guests">Approx. Guests</label>
+            <select id="f-guests"><option>Under 100</option><option>100–300</option><option>300–600</option><option>600–1000</option><option>1000+</option></select>
+          </div>
+          <div class="field"><label for="f-hours">Hours Needed</label>
+            <select id="f-hours"><option>Up to 4 hours</option><option>4–6 hours</option><option>6+ hours</option><option>Multi-day event</option></select>
+          </div>
+        </div>
+        <div class="field"><label for="f-msg">Anything else?</label><textarea id="f-msg" placeholder="Venue name, timings, must-play songs, add-ons like dhol or LED wall..."></textarea></div>
+        <button class="btn wa" type="submit" style="width:100%;justify-content:center">Send on WhatsApp</button>
+        <p class="form-note">Opens WhatsApp with everything above pre-filled. Nothing is stored on this site.</p>
+        <div class="form-ok" id="formOk">▸ Opening WhatsApp… if nothing happened, tap the green button instead.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" data-hue="rgba(0,240,255,.11)">
+  <div class="wrap" style="max-width:900px">
+    <div class="sec-head rv">
+      <div class="sec-num">09 — FAQ</div>
+      <h2 class="sec-title">COMMON <em>QUESTIONS</em></h2>
+    </div>
+    <div class="rv" id="faqList"></div>
+    <div style="text-align:center;margin-top:38px" class="rv">
+      <a href="#" class="btn wa" data-wa="Hi, I have a question about booking.">Still Have a Question? Ask Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-big">PROJECT R</div>
+  <div class="foot-grid">
+    <div>
+      <h4>Book the Night</h4>
+      <p style="color:var(--txt-dim);font-size:15px">Weddings, sangeet, clubs, corporate events and private parties. Send your date and get availability the same day.</p>
+      <a href="#" class="btn wa" style="margin-top:16px" data-wa="Hi, I'd like to book you for an event.">WhatsApp Now</a>
+    </div>
+    <div><h4>Events</h4><ul>
+      <li><a href="#services">Weddings &amp; Sangeet</a></li><li><a href="#services">Clubs &amp; Pubs</a></li>
+      <li><a href="#services">Corporate</a></li><li><a href="#services">Private Parties</a></li><li><a href="#services">College Fests</a></li>
+    </ul></div>
+    <div><h4>Info</h4><ul>
+      <li><a href="#process">How Booking Works</a></li><li><a href="#setup">Sound &amp; Lighting</a></li>
+      <li><a href="#packages">Packages</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#faq">FAQ</a></li>
+    </ul></div>
+    <div><h4>Follow</h4><ul>
+      <li><a href="#">Instagram</a></li><li><a href="#">YouTube</a></li>
+      <li><a href="#">Facebook</a></li><li><a href="#">Google Reviews</a></li>
+    </ul></div>
+  </div>
+  <div class="foot-bottom">
+    <span>© <span id="yr"></span> PROJECT R · ALL RIGHTS RESERVED</span>
+    <span>SERVING [YOUR CITY] AND ACROSS INDIA</span>
+  </div>
+</footer>
+
+<!-- ============ PERSISTENT CTAs ============ -->
+<a href="#" class="fab wa" data-wa="Hi, I want to check availability for my event."><span>💬</span> BOOK ON WHATSAPP</a>
+<div class="sticky-bar">
+  <a href="#" class="wa" data-wa="Hi, I want to check availability for my event.">💬 WhatsApp</a>
+  <a href="#booking">Check My Date</a>
+</div>
+
+<script src="assets/js/main.js?v=13"></script>
+</body>
+</html>
