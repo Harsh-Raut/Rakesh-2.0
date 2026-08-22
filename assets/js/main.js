@@ -63,9 +63,11 @@ const PHONE_DIAL      = '+910000000000';   // ← replace
   }
 
   /* ---------- 4. AMBIENT SPECKS ---------- */
+  // Phones pay for every animated node; 34 drifting specks is desktop-only garnish.
+  const smallScreen = matchMedia('(max-width:720px)').matches;
   if (!reduced) {
     const box = $('#specks'), tones = ['#00f0ff', '#ff2bd1', '#c6ff3d', '#ffb43d'];
-    for (let i = 0; i < 34; i++) {
+    for (let i = 0, n = smallScreen ? 8 : 34; i < n; i++) {
       const s = document.createElement('i');
       s.className = 'speck';
       s.style.left = Math.random() * 100 + '%';
@@ -78,7 +80,11 @@ const PHONE_DIAL      = '+910000000000';   // ← replace
 
   /* ---------- 5. NAV ---------- */
   const nav = $('#nav'), burger = $('#burger'), menu = $('#menu');
-  addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 60), { passive: true });
+  addEventListener('scroll', () => {
+    nav.classList.toggle('stuck', scrollY > 60);
+    document.body.classList.toggle('at-hero', scrollY < innerHeight * .82);
+  }, { passive: true });
+  document.body.classList.add('at-hero');
   burger.addEventListener('click', () => { burger.classList.toggle('x'); menu.classList.toggle('show'); });
   $$('#menu a').forEach(a => a.addEventListener('click', () => {
     burger.classList.remove('x'); menu.classList.remove('show');
@@ -86,7 +92,7 @@ const PHONE_DIAL      = '+910000000000';   // ← replace
 
   /* ---------- 6. EQUALIZER ---------- */
   const eq = $('#eq');
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0, n = matchMedia('(max-width:720px)').matches ? 18 : 40; i < n; i++) {
     const b = document.createElement('i');
     b.style.animationDuration = (.5 + Math.random() * .8).toFixed(2) + 's';
     b.style.animationDelay = (-Math.random() * 1.2).toFixed(2) + 's';
@@ -332,6 +338,79 @@ const PHONE_DIAL      = '+910000000000';   // ← replace
     init();
   })();
 
+  /* ---------- 12b. HERO BACKGROUND VIDEO ---------- */
+  // The clip does not loop cleanly, and a 5s loop repeats 12x a minute, so a
+  // hard cut would be very obvious full-bleed. Two decoders play the same file
+  // and hand off: as one nears the end the other starts from zero and they
+  // crossfade, hiding the seam entirely. Slight slow-down makes the handoff
+  // rarer and reads more cinematic.
+  (function heroBg() {
+    const bg = $('#heroBg'), a = $('#heroVidA'), b = $('#heroVidB');
+    if (!bg || !a || !b) return;
+
+    const conn = navigator.connection || {};
+    const slow = conn.saveData === true || /^(slow-)?2g$/.test(conn.effectiveType || '');
+    // mobile keeps the portrait still: a 16:9 clip in a tall viewport is unusable.
+    // ?video=1 forces it on for testing regardless of width/connection.
+    const force = /[?&]video=1/.test(location.search);
+    if (!force && (!matchMedia('(min-width:981px)').matches || reduced || slow)) return;
+
+    const RATE = 0.85;      // playback speed
+    const FADE = 0.6;       // crossfade length, seconds
+    let front = a, back = b, swapping = false;
+
+    // defaultPlaybackRate survives load(); playbackRate alone gets reset,
+    // and is re-applied on metadata and at every handoff as a belt-and-braces.
+    [a, b].forEach(v => {
+      v.defaultPlaybackRate = RATE;
+      v.playbackRate = RATE;
+      v.addEventListener('loadedmetadata', () => { v.playbackRate = RATE; });
+      v.preload = 'auto';
+      v.load();
+    });
+
+    const swap = () => {
+      if (swapping) return;
+      swapping = true;
+      back.currentTime = 0;
+      back.playbackRate = RATE;
+      back.play().catch(() => {});
+      back.style.opacity = '1';
+      front.style.opacity = '0';
+      const old = front;
+      front = back; back = old;
+      setTimeout(() => { back.pause(); swapping = false; }, FADE * 1000 + 60);
+    };
+
+    const watch = () => {
+      if (!swapping && front.duration && front.currentTime >= front.duration - FADE) swap();
+      raf = requestAnimationFrame(watch);
+    };
+    let raf = null;
+
+    a.addEventListener('canplay', () => {
+      a.play().then(() => {
+        a.style.opacity = '1';
+        bg.classList.add('video-on');
+        if (!raf) raf = requestAnimationFrame(watch);
+      }).catch(() => {});
+    }, { once: true });
+
+    // stop decoding both while the hero is off screen
+    new IntersectionObserver(en => {
+      en.forEach(e => {
+        if (!bg.classList.contains('video-on')) return;
+        if (e.isIntersecting) {
+          front.play().catch(() => {});
+          if (!raf) raf = requestAnimationFrame(watch);
+        } else {
+          a.pause(); b.pause();
+          if (raf) { cancelAnimationFrame(raf); raf = null; }
+        }
+      });
+    }, { threshold: .05 }).observe(bg);
+  })();
+
   /* ---------- 12c. PINNED HORIZONTAL SCROLL — how it works ---------- */
   // Vertical scroll drives the track sideways while the section is pinned.
   // The runway height is computed from the real track width so the last panel
@@ -388,6 +467,16 @@ const PHONE_DIAL      = '+910000000000';   // ← replace
     measure(); apply();
     if (!wide() && panels[0]) panels[0].classList.add('active');
   })();
+
+  /* ---------- 12d. GALLERY FALLBACK ---------- */
+  // Tiles whose image hasn't been supplied yet drop the <img> and fall back to
+  // the coloured gradient tile, so the section never shows a broken-image icon.
+  $$('.shot img').forEach(img => {
+    const tile = img.closest('.shot');           // capture before detaching
+    const fail = () => { tile?.classList.add('empty'); img.remove(); };
+    img.addEventListener('error', fail, { once: true });
+    if (img.complete && img.naturalWidth === 0) fail();
+  });
 
   /* ---------- 13. SECTION DIVIDERS ---------- */
   // A line that draws itself in as each section arrives.
