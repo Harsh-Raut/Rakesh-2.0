@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=13">
+<link rel="stylesheet" href="assets/css/style.css?v=33">
 </head>
 <body>
 
@@ -67,41 +67,52 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top" data-hue="rgba(139,59,255,.18)">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="hero-kicker">
-        <span class="live-dot"></span>
-        <span class="chip">NOW BOOKING 2026</span>
-        <span class="chip amb">WEDDINGS &amp; SANGEET</span>
-        <span class="chip mag">CLUBS &amp; CORPORATE</span>
-      </div>
-      <h1>
-        <span class="glitch" data-text="PROJECT R">PROJECT R</span>
-        <span class="l2">BOOK THE NIGHT</span>
-      </h1>
-      <p class="hero-sub">Weddings, sangeet, club nights, corporate parties and private events.
-      One DJ, full sound and lighting setup, and a floor that doesn't sit down.
-      <b style="color:var(--txt)">Tell me your date — I'll tell you in minutes if it's free.</b></p>
-      <div class="hero-cta">
-        <a href="#" class="btn wa" data-wa="Hi, I want to check availability for my event.">Check Availability on WhatsApp</a>
-        <a href="#packages" class="btn ghost">See Packages &amp; Pricing</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><b data-count="000">0</b><span>Events Played</span></div>
-        <div class="stat"><b data-count="00">0</b><span>Years Behind the Deck</span></div>
-        <div class="stat"><b data-count="00">0</b><span>Cities Covered</span></div>
-        <div class="stat"><b data-count="000">0</b><span>Happy Clients</span></div>
-      </div>
-      <p class="form-note">▸ Numbers above are placeholders — send me the real figures and I'll drop them in.</p>
+
+  <!-- full-bleed background: video on desktop, portrait still on mobile -->
+  <div class="hero-bg" id="heroBg">
+    <img class="hero-bg-still" src="assets/img/hero-portrait.webp"
+         alt="DJ Rakesh behind the decks under club lighting"
+         width="918" height="1141" fetchpriority="high" decoding="async">
+    <video class="hero-bg-video va" id="heroVidA" muted playsinline preload="none" aria-hidden="true" tabindex="-1">
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+    <video class="hero-bg-video vb" id="heroVidB" muted playsinline preload="none" aria-hidden="true" tabindex="-1">
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+    <div class="deck ghost" aria-hidden="true">
+      <div class="ring r2"></div><div class="ring"></div>
+      <div class="platter"></div>
     </div>
-    <div>
-      <div class="deck">
-        <div class="ring r2"></div><div class="ring"></div>
-        <div class="platter"></div>
-        <div class="deck-badge">REPLYING IN UNDER 1 HOUR</div>
-      </div>
-      <div class="eq" id="eq"></div>
+    <span class="hero-bg-scrim"></span>
+  </div>
+
+  <div class="wrap hero-inner">
+    <div class="hero-kicker">
+      <span class="live-dot"></span>
+      <span class="chip">NOW BOOKING 2026</span>
+      <span class="chip amb">WEDDINGS &amp; SANGEET</span>
+      <span class="chip mag">CLUBS &amp; CORPORATE</span>
     </div>
+    <h1>
+      <span class="glitch" data-text="PROJECT R">PROJECT R</span>
+      <span class="l2">BOOK THE NIGHT</span>
+    </h1>
+    <p class="hero-sub">Weddings, sangeet, club nights, corporate parties and private events.
+    One DJ, full sound and lighting setup, and a floor that doesn't sit down.
+    <b style="color:var(--txt)">Tell me your date — I'll tell you in minutes if it's free.</b></p>
+    <div class="hero-cta">
+      <a href="#" class="btn wa" data-wa="Hi, I want to check availability for my event.">Check Availability on WhatsApp</a>
+      <a href="#packages" class="btn ghost">See Packages</a>
+    </div>
+    <p class="reply-note"><span class="live-dot"></span> Replying in under 1 hour</p>
+    <div class="hero-stats">
+      <div class="stat"><b data-count="000">0</b><span>Events Played</span></div>
+      <div class="stat"><b data-count="00">0</b><span>Years Behind the Deck</span></div>
+      <div class="stat"><b data-count="00">0</b><span>Cities Covered</span></div>
+      <div class="stat"><b data-count="000">0</b><span>Happy Clients</span></div>
+    </div>
+    <p class="form-note">▸ Numbers above are placeholders — send me the real figures and I'll drop them in.</p>
+    <div class="eq" id="eq"></div>
   </div>
 </section>
 
@@ -121,6 +132,8 @@
     <div class="grid-4 svc-grid" style="gap:20px">
 
       <article class="svc rv">
+        <img class="svc-photo" src="assets/img/card-wedding.webp" srcset="assets/img/card-wedding-sm.webp 520w, assets/img/card-wedding-md.webp 760w, assets/img/card-wedding.webp 928w" sizes="(max-width:620px) 92vw, (max-width:980px) 46vw, 300px" alt="DJ Rakesh performing at an Indian wedding sangeet" loading="lazy" decoding="async" width="928" height="1152">
+        <span class="svc-scrim"></span>
         <div class="ico">💍</div>
         <span class="glow"></span><span class="edge"></span>
         <h3>WEDDINGS &amp; SANGEET</h3>
@@ -140,6 +153,8 @@
       </article>
 
       <article class="svc rv">
+        <img class="svc-photo" src="assets/img/card-club.webp" srcset="assets/img/card-club-sm.webp 520w, assets/img/card-club-md.webp 760w, assets/img/card-club.webp 928w" sizes="(max-width:620px) 92vw, (max-width:980px) 46vw, 300px" alt="DJ Rakesh playing a club night" loading="lazy" decoding="async" width="928" height="1152">
+        <span class="svc-scrim"></span>
         <div class="ico">🍸</div>
         <span class="glow"></span><span class="edge"></span>
         <h3>CLUBS, PUBS &amp; LOUNGES</h3>
@@ -159,6 +174,8 @@
       </article>
 
       <article class="svc rv">
+        <img class="svc-photo" src="assets/img/card-corporate.webp" srcset="assets/img/card-corporate-sm.webp 520w, assets/img/card-corporate-md.webp 760w, assets/img/card-corporate.webp 928w" sizes="(max-width:620px) 92vw, (max-width:980px) 46vw, 300px" alt="DJ Rakesh at a corporate brand event" loading="lazy" decoding="async" width="928" height="1152">
+        <span class="svc-scrim"></span>
         <div class="ico">🏢</div>
         <span class="glow"></span><span class="edge"></span>
         <h3>CORPORATE &amp; BRAND</h3>
@@ -178,6 +195,8 @@
       </article>
 
       <article class="svc rv">
+        <img class="svc-photo" src="assets/img/card-private.webp" srcset="assets/img/card-private-sm.webp 520w, assets/img/card-private-md.webp 760w, assets/img/card-private.webp 928w" sizes="(max-width:620px) 92vw, (max-width:980px) 46vw, 300px" alt="DJ Rakesh at a rooftop private party" loading="lazy" decoding="async" width="928" height="1152">
+        <span class="svc-scrim"></span>
         <div class="ico">🎉</div>
         <span class="glow"></span><span class="edge"></span>
         <h3>PRIVATE &amp; COLLEGE</h3>
@@ -292,14 +311,14 @@
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-num">04 — PACKAGES</div>
-      <h2 class="sec-title">STRAIGHT <em>PRICING</em></h2>
-      <p class="sec-desc">Ballpark bands so you can plan a budget. Final quote depends on date, city, guest count and hours — ask and you'll get an exact number, not a callback.</p>
+      <h2 class="sec-title">PICK YOUR <em>SCALE</em></h2>
+      <p class="sec-desc">Three sizes of night. Every quote is built around your date, city, guest count and hours — so pick the closest fit and we'll talk the number through on a quick call.</p>
     </div>
     <div class="grid-3">
       <div class="pkg rv">
         <h3>ESSENTIAL</h3>
         <div class="who">House parties · Small functions</div>
-        <div class="price">₹ __,___<small>STARTING FROM · UP TO 4 HOURS</small></div>
+        <div class="scope">UP TO 4 HOURS<small>Up to 150 guests</small></div>
         <ul>
           <li>DJ set up to 4 hours</li>
           <li>PA for up to 150 guests</li>
@@ -307,13 +326,13 @@
           <li>One wireless mic</li>
           <li>Setup &amp; teardown included</li>
         </ul>
-        <a href="#" class="btn ghost wa" data-wa="Hi, I'm interested in the ESSENTIAL package.">Enquire</a>
+        <a href="#" class="btn ghost wa" data-wa="Hi, I'd like a quote for the ESSENTIAL package. My event details:">Get a Quote</a>
       </div>
       <div class="pkg hot rv">
         <span class="flag">MOST BOOKED</span>
         <h3>SIGNATURE</h3>
         <div class="who">Weddings · Sangeet · Corporate</div>
-        <div class="price">₹ __,___<small>STARTING FROM · UP TO 6 HOURS</small></div>
+        <div class="scope">UP TO 6 HOURS<small>Up to 500 guests</small></div>
         <ul>
           <li>DJ set up to 6 hours</li>
           <li>PA for up to 500 guests</li>
@@ -322,12 +341,12 @@
           <li>Planning call &amp; custom playlist</li>
           <li>Smoke / haze included</li>
         </ul>
-        <a href="#" class="btn wa" data-wa="Hi, I'm interested in the SIGNATURE package.">Enquire</a>
+        <a href="#" class="btn wa" data-wa="Hi, I'd like a quote for the SIGNATURE package. My event details:">Get a Quote</a>
       </div>
       <div class="pkg rv">
         <h3>GRAND</h3>
         <div class="who">Big weddings · Fests · Launches</div>
-        <div class="price">₹ _,__,___<small>STARTING FROM · FULL EVENT</small></div>
+        <div class="scope">FULL EVENT<small>1000+ guests · multi-day</small></div>
         <ul>
           <li>Multi-day / multi-function coverage</li>
           <li>Large-format PA, 1000+ guests</li>
@@ -336,10 +355,12 @@
           <li>Generator backup &amp; full crew</li>
           <li>On-site coordinator</li>
         </ul>
-        <a href="#" class="btn ghost wa" data-wa="Hi, I'm interested in the GRAND package.">Enquire</a>
+        <a href="#" class="btn ghost wa" data-wa="Hi, I'd like a quote for the GRAND package. My event details:">Get a Quote</a>
       </div>
     </div>
-    <p class="form-note" style="text-align:center;margin-top:26px">▸ Prices are blank placeholders. Send me your real bands and inclusions and I'll fill them in.</p>
+    <p class="pkg-note rv">Pricing is quoted per event, not off a menu — a 300-guest reception in your city
+      costs a different number to a 300-guest one four hours away. Send the date and the details and you'll have a
+      figure the same day, on WhatsApp or a two-minute call.</p>
   </div>
 </section>
 
@@ -379,21 +400,42 @@
 <section id="gallery" data-hue="rgba(139,59,255,.17)">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="sec-num">06 — THE FLOOR</div>
+      <div class="sec-num">06 — PAST EVENTS</div>
       <h2 class="sec-title">NIGHTS THAT <em>WENT OFF</em></h2>
-      <p class="sec-desc">Placeholder tiles — swap each one for a real photo from a past event (1600px or larger).</p>
+      <p class="sec-desc">Weddings, clubs, corporate floors and college fests. Every room is different — the job is the same: nobody sits down.</p>
     </div>
     <div class="gal rv">
-      <figure class="shot"><span class="ico">💃</span><figcaption class="cap">Sangeet Night · Dancefloor</figcaption></figure>
-      <figure class="shot"><span class="ico">🎛️</span><figcaption class="cap">The Console · Setup</figcaption></figure>
-      <figure class="shot"><span class="ico">🥁</span><figcaption class="cap">Dhol · Baraat Entry</figcaption></figure>
-      <figure class="shot"><span class="ico">🪩</span><figcaption class="cap">Reception · Full Rig</figcaption></figure>
-      <figure class="shot"><span class="ico">🏢</span><figcaption class="cap">Corporate Annual Day</figcaption></figure>
-      <figure class="shot"><span class="ico">🍸</span><figcaption class="cap">Club Night · Peak Hour</figcaption></figure>
-      <figure class="shot"><span class="ico">✨</span><figcaption class="cap">Cold Pyro · First Dance</figcaption></figure>
+      <figure class="shot">
+        <img src="assets/img/gal-sangeet.webp" srcset="assets/img/gal-sangeet-sm.webp 520w, assets/img/gal-sangeet-md.webp 760w, assets/img/gal-sangeet.webp 1240w" sizes="(max-width:980px) 92vw, 620px" alt="Packed dancefloor at an Indian sangeet" loading="lazy" decoding="async">
+        <figcaption class="cap">Sangeet Night</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/img/gal-rooftop.webp" srcset="assets/img/gal-rooftop-sm.webp 520w, assets/img/gal-rooftop.webp 760w" sizes="(max-width:980px) 46vw, 300px" alt="DJ Rakesh on a rooftop party stage with confetti" loading="lazy" decoding="async">
+        <figcaption class="cap">Rooftop Party</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/img/gal-corporate.webp" srcset="assets/img/gal-corporate-sm.webp 520w, assets/img/gal-corporate-md.webp 760w, assets/img/gal-corporate.webp 900w" sizes="(max-width:980px) 46vw, 300px" alt="Corporate audience dancing at an annual day" loading="lazy" decoding="async">
+        <figcaption class="cap">Corporate Annual Day</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/img/gal-booth.webp" srcset="assets/img/gal-booth-sm.webp 520w, assets/img/gal-booth-md.webp 760w, assets/img/gal-booth.webp 900w" sizes="(max-width:980px) 46vw, 300px" alt="View over the console toward a packed floor" loading="lazy" decoding="async">
+        <figcaption class="cap">From the Booth</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/img/gal-club.webp" srcset="assets/img/gal-club-sm.webp 520w, assets/img/gal-club-md.webp 760w, assets/img/gal-club.webp 1584w" sizes="(max-width:980px) 92vw, 620px" alt="Club crowd at peak hour under lasers" loading="lazy" decoding="async">
+        <figcaption class="cap">Club Night · Peak Hour</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/img/gal-reception.webp" srcset="assets/img/gal-reception-sm.webp 520w, assets/img/gal-reception-md.webp 760w, assets/img/gal-reception.webp 900w" sizes="(max-width:980px) 46vw, 300px" alt="Wedding reception dancefloor at full capacity" loading="lazy" decoding="async">
+        <figcaption class="cap">Reception · Full Floor</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/img/gal-fest.webp" srcset="assets/img/gal-fest-sm.webp 520w, assets/img/gal-fest-md.webp 760w, assets/img/gal-fest.webp 900w" sizes="(max-width:980px) 46vw, 300px" alt="College festival crowd with hands raised" loading="lazy" decoding="async">
+        <figcaption class="cap">College Fest</figcaption>
+      </figure>
     </div>
     <div style="text-align:center;margin-top:34px" class="rv">
-      <a href="#" class="btn wa" data-wa="Hi, can you send more photos/videos of past events?">Ask for More Photos &amp; Videos</a>
+      <a href="#" class="btn wa" data-wa="Hi, can you send more photos and videos from past events?">See More Photos &amp; Videos</a>
     </div>
   </div>
 </section>
@@ -424,6 +466,10 @@
     </div>
     <div class="book">
       <div class="rv">
+        <figure class="book-photo">
+          <img src="assets/img/booking-portrait.webp" srcset="assets/img/booking-portrait-sm.webp 520w, assets/img/booking-portrait-md.webp 760w, assets/img/booking-portrait.webp 896w" sizes="(max-width:980px) 92vw, 420px" alt="DJ Rakesh at the booth" loading="lazy" decoding="async" width="896" height="1200">
+          <figcaption>The person you're texting</figcaption>
+        </figure>
         <a href="#" class="panel wa" style="display:block;margin-bottom:16px;border-color:rgba(37,211,102,.4)" data-wa="Hi, I want to check availability for my event.">
           <div class="panel-num" style="color:#25D366">FASTEST — TAP TO CHAT</div>
           <h3 id="waNumber">+91 XXXXX XXXXX</h3>
@@ -523,6 +569,6 @@
   <a href="#booking">Check My Date</a>
 </div>
 
-<script src="assets/js/main.js?v=13"></script>
+<script src="assets/js/main.js?v=33"></script>
 </body>
 </html>
