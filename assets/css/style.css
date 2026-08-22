@@ -239,7 +239,8 @@ section{position:relative;z-index:2;padding:120px 34px}
    7. HERO
    ============================================================ */
 .hero{min-height:100svh;display:grid;align-items:center;padding-top:120px}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center}
+.hero-grid>*{min-width:0}
 @media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:40px}}
 
 .hero-kicker{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
@@ -247,10 +248,11 @@ section{position:relative;z-index:2;padding:120px 34px}
 @keyframes blink{50%{opacity:.25}}
 .hero h1{
   font-family:var(--font-display);font-weight:900;
-  font-size:clamp(52px,12.5vw,168px);line-height:.82;letter-spacing:-.045em;
+  font-size:clamp(44px,7.4vw,112px);line-height:.86;letter-spacing:-.04em;
   text-shadow:0 0 42px rgba(0,240,255,.28);
 }
-.hero h1 .l2{display:block;font-size:.36em;line-height:1;letter-spacing:-.01em;margin-top:.12em;
+.hero h1 .glitch{display:block;white-space:nowrap}
+.hero h1 .l2{display:block;font-size:.42em;line-height:1;letter-spacing:-.01em;margin-top:.12em;
   color:transparent;-webkit-text-stroke:1.6px var(--magenta)}
 .hero-sub{margin:26px 0 34px;max-width:52ch;color:#b9b4d6;font-size:19px}
 .hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:38px}
@@ -803,4 +805,251 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(0,240,255,.18);padd
   .pin-wrap{height:auto!important}
   .pin{position:static;height:auto;overflow:visible}
   .htrack{overflow-x:auto;transform:none!important}
+}
+
+/* ============================================================
+   24. PHOTOGRAPHY LAYERS
+   Card art sits between the colour gradient and the copy, with a
+   scrim on top so the text stays legible at every card height.
+   Layer order inside .svc:
+     ::before hue gradient (0) · photo (1) · scrim (2) ·
+     pointer glow (3) · copy (4) · traced edge (5)
+   ============================================================ */
+.svc-photo{
+  position:absolute;inset:0;z-index:1;width:100%;height:100%;
+  object-fit:cover;object-position:60% 50%;
+  opacity:.85;transform:scale(1.01);
+  transition:opacity .6s var(--ease),transform .8s var(--ease);
+}
+.svc-scrim{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(4,3,10,.90) 0%,
+    rgba(4,3,10,.60) 26%,
+    rgba(4,3,10,.84) 58%,
+    rgba(4,3,10,.96) 100%);
+  transition:background .6s var(--ease);
+}
+.svc .glow{z-index:3}
+.svc>.ico,.svc>h3,.svc>p,.svc>.nm,.svc>ul,.svc>.btn{position:relative;z-index:4}
+.svc .edge{z-index:5}
+
+.svc:hover .svc-photo{opacity:1;transform:scale(1.07)}
+.svc:hover .svc-scrim{
+  background:linear-gradient(180deg,
+    rgba(4,3,10,.84) 0%,
+    rgba(4,3,10,.48) 26%,
+    rgba(4,3,10,.80) 58%,
+    rgba(4,3,10,.95) 100%);
+}
+
+/* the icon is redundant once there's a real photo */
+.svc .ico{display:none}
+
+/* --- booking section portrait --- */
+.book-photo{position:relative;margin-bottom:16px;clip-path:var(--edge);overflow:hidden}
+.book-photo img{width:100%;height:auto;display:block;aspect-ratio:3/4;object-fit:cover;
+  object-position:center 22%;transition:transform .8s var(--ease)}
+.book-photo:hover img{transform:scale(1.04)}
+.book-photo figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:22px 20px 16px;
+  background:linear-gradient(0deg,rgba(4,3,10,.96),transparent);
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--cyan);
+}
+@media(prefers-reduced-motion:reduce){
+  .svc-photo,.book-photo img{transition:none}
+}
+
+/* ============================================================
+   28. FULL-BLEED HERO BACKGROUND
+   Desktop: the landscape clip fills the hero (it was being
+   half-discarded inside the old portrait panel).
+   Mobile: the portrait still fills it instead — a 16:9 clip in a
+   tall viewport crops to an unusable sliver.
+   ============================================================ */
+.hero{position:relative;overflow:hidden;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--void)}
+.hero-bg-still,.hero-bg-video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:62% 42%;
+}
+.hero-bg-video{opacity:0;transition:opacity .55s linear;will-change:opacity}
+.hero-bg.video-on .hero-bg-still{opacity:0;transition:opacity .8s var(--ease)}
+
+/* keeps the copy readable: heavy on the left, thinning toward the subject */
+.hero-bg-scrim{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(4,3,10,.97) 0%,rgba(4,3,10,.88) 30%,
+                    rgba(4,3,10,.42) 62%,rgba(4,3,10,.62) 100%),
+    linear-gradient(0deg,rgba(4,3,10,.96) 0%,rgba(4,3,10,.15) 34%,transparent 55%),
+    linear-gradient(180deg,rgba(4,3,10,.92) 0%,transparent 24%);
+}
+
+/* the turntable survives as a low-opacity brand mark */
+.deck.ghost{
+  position:absolute;right:-70px;bottom:-70px;z-index:2;
+  width:min(430px,42vw);height:min(430px,42vw);
+  max-width:none;margin:0;opacity:.17;
+}
+.deck.ghost .platter{box-shadow:none}
+
+.hero-inner{position:relative;z-index:4;width:100%;padding-block:40px}
+.hero-inner h1,.hero-inner .hero-sub,.hero-inner .hero-cta,
+.hero-inner .hero-stats,.hero-inner .form-note{max-width:min(660px,58%)}
+.hero-inner .eq{max-width:min(660px,58%);opacity:.55}
+
+.reply-note{
+  display:flex;align-items:center;gap:10px;margin:-18px 0 30px;
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--acid);
+}
+.reply-note .live-dot{background:var(--acid);box-shadow:0 0 12px var(--acid)}
+
+@media(max-width:980px){
+  .hero-bg-still{object-position:58% 30%}
+  .hero-bg-scrim{
+    background:
+      linear-gradient(0deg,rgba(4,3,10,.97) 0%,rgba(4,3,10,.72) 38%,rgba(4,3,10,.45) 70%),
+      linear-gradient(180deg,rgba(4,3,10,.94) 0%,rgba(4,3,10,.45) 30%);
+  }
+  .hero-inner h1,.hero-inner .hero-sub,.hero-inner .hero-cta,
+  .hero-inner .hero-stats,.hero-inner .form-note,.hero-inner .eq{max-width:none}
+  .deck.ghost{width:230px;height:230px;right:-50px;bottom:-50px;opacity:.13}
+}
+
+/* the ambient grid and lasers turn to mush over moving footage —
+   pull them back while the hero is the thing on screen */
+body.at-hero .fx-grid{opacity:.3}
+body.at-hero .fx-lasers{opacity:.35}
+body.at-hero .fx-scan{opacity:.28}
+.fx-grid,.fx-lasers,.fx-scan{transition:opacity .6s var(--ease)}
+
+/* ============================================================
+   29. GALLERY IMAGES
+   Tiles keep their gradient underneath, so a missing or
+   not-yet-supplied image degrades to the original coloured
+   tile plus caption rather than a broken-image icon.
+   ============================================================ */
+.shot img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  transition:transform .7s var(--ease),filter .5s var(--ease);
+}
+.shot:hover img{transform:scale(1.07);filter:saturate(1.15)}
+.shot .cap{z-index:3}
+.shot.empty::after{
+  content:"IMAGE PENDING";position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.28);
+}
+@media(prefers-reduced-motion:reduce){.shot img{transition:none}}
+
+/* touch devices have no hover, so gallery captions stay visible */
+@media(hover:none){
+  .shot .cap{transform:none}
+}
+
+/* ============================================================
+   30. GALLERY GRID — explicit placement
+   Tile 2 is deliberately tall (portrait) so a 4:5 image sits in
+   it without being cropped through the subject's waist.
+   4 columns x 3 rows, fully filled by 7 tiles.
+   ============================================================ */
+@media(min-width:981px){
+  .gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:190px}
+  .gal .shot:nth-child(1){grid-column:1/3;grid-row:1/3}  /* large landscape */
+  .gal .shot:nth-child(2){grid-column:3/4;grid-row:1/3}  /* tall portrait   */
+  .gal .shot:nth-child(3){grid-column:4/5;grid-row:1/2}
+  .gal .shot:nth-child(4){grid-column:4/5;grid-row:2/3}
+  .gal .shot:nth-child(5){grid-column:1/3;grid-row:3/4}  /* ultra-wide      */
+  .gal .shot:nth-child(6){grid-column:3/4;grid-row:3/4}
+  .gal .shot:nth-child(7){grid-column:4/5;grid-row:3/4}
+}
+@media(max-width:980px){
+  .gal .shot{grid-column:auto;grid-row:auto}
+  .gal .shot:nth-child(1),
+  .gal .shot:nth-child(5){grid-column:span 2}
+  .gal .shot:nth-child(2){grid-row:span 2}
+}
+
+/* ============================================================
+   31. PACKAGES WITHOUT PRICES
+   Pricing is quoted on a call, so the price slot becomes the
+   scope of the night — the thing that actually differentiates
+   the three tiers.
+   ============================================================ */
+.pkg .scope{
+  font-family:var(--font-display);font-size:24px;line-height:1.05;
+  color:var(--acid);margin:20px 0 4px;letter-spacing:.01em;
+}
+.pkg .scope small{
+  display:block;margin-top:8px;font-family:var(--font-mono);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--txt-dim);
+}
+.pkg-note{
+  max-width:70ch;margin:30px auto 0;text-align:center;
+  color:var(--txt-dim);font-size:15.5px;line-height:1.65;
+}
+
+/* ============================================================
+   32. MOBILE OPTIMISATION
+   Phones pay for every continuously-animating layer in battery
+   and jank, and most of these effects are invisible at 375px.
+   ============================================================ */
+@media(max-width:720px){
+
+  /* --- cut the always-running compositing work --- */
+  .fx-lasers{display:none}                 /* 4 rotating full-height gradients */
+  .fx-scan::after{animation:none}          /* the sweeping band */
+  .fx-scan{opacity:.35}
+  .fx-grid{animation:none;opacity:.5}      /* static grid still reads fine */
+  .fx-haze{animation:none}
+
+  /* backdrop-filter is one of the most expensive things a phone can paint,
+     and it sits on two permanently-visible fixed bars */
+  header.nav,header.nav.stuck{backdrop-filter:none;background:rgba(4,3,10,.94)}
+  .sticky-bar{backdrop-filter:none;background:rgba(4,3,10,.97)}
+
+  /* --- tap targets: 44px minimum --- */
+  .burger{width:44px;height:44px;margin-right:-6px}
+  .burger span{left:6px;width:32px}
+  .burger span:nth-child(1){top:14px}
+  .burger span:nth-child(2){top:22px}
+  .burger span:nth-child(3){top:30px}
+  .burger.x span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .burger.x span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+  .btn{min-height:48px;padding:14px 24px}
+  .foot-grid a{display:inline-block;padding:11px 0;min-height:44px}
+  .foot-grid li{margin-bottom:2px}
+  .mix,.faq-q{min-height:48px}
+
+  /* --- legibility floor: nothing under 11px on a phone --- */
+  .sec-num,.chip,.nm-top,.hp-tag,.hrail-marks,.shot .cap,
+  .stat span,.foot-grid h4,.foot-bottom,.form-note,.pkg .who,
+  .pkg .scope small,.nm-ticks,.deck-badge,.reply-note{font-size:11px}
+  .nm-top b{font-size:12px}
+  .sec-desc,.panel p,.svc p,.step p{font-size:16px}
+
+  /* --- long page: skip rendering work for off-screen sections --- */
+  section:not(.hero){content-visibility:auto;contain-intrinsic-size:auto 900px}
+
+  /* --- trim vertical bulk so the page isn't endless --- */
+  section{padding:64px 20px}
+  .sec-head{margin-bottom:36px}
+}
+
+/* very small phones */
+@media(max-width:380px){
+  .hero h1{font-size:44px}
+  .btn{padding:13px 18px;font-size:11px;letter-spacing:.16em}
+  .chip{padding:5px 10px}
+}
+
+/* final mobile stragglers: logo tap area and the two 10px labels */
+@media(max-width:720px){
+  .brand{min-height:48px;align-items:center}
+  .brand small{font-size:11px}
+  .pkg .flag{font-size:11px;padding:7px 14px}
 }
